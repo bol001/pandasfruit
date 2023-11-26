@@ -16,7 +16,7 @@
 # desired markdown width, the columns are iteratively wrapped to increasingly shorter
 # widths until the desired width of the markdown is achieved.
 
-def shorten_df_for_printing(df, desired_width=115, abbreviations=None):
+def df_to_fitted_markdown(df, desired_width=115, abbreviations=None):
 
     import textwrap
 
