@@ -1,10 +1,16 @@
 # pandasfruit
 
-Takes in a pandas dataframe and returns a string containing markdown format where the width of the markdown text is more narrow and is suitable for printing. A more narrow table can fit on a printed page, such as a PDF generated from a Jupyter notebook.
+## Summary
+Takes in a pandas dataframe and returns a string containing markdown format where the width of the markdown text is more narrow and is suitable for printing. The more narrow table can fit on a printed page, such as a PDF generated from a Jupyter notebook.
 
 Takes in an optional width parameter (number of characters) and will make the resulting markdown this wide. Else will use a default width of 115.
 
-Also will use a default dictionary of words/abbreviations to shorten column names using the abbreviations instead of the original words. Alternatively, a  user-defined dictionary may be passed in.
+Also will use a default dictionary of words/abbreviations to shorten column names using the abbreviations instead of the original words. Alternatively, a  user-defined dictionary may be passed in. Pass in empty dictionary to do no replacements.
+
+## Processing
+To achieve the more-narrow markdown version of the df, first column names are shortened using the default abbreviations dictionary (or the optional user-provided dictionary). Keywords in column names are replaced with abbreviations. Note that column names may contain words separated by either underscores or spaces.
+
+If, after wrapping column names, the width of the markdown is still greater than the desired markdown width, the columns are iteratively wrapped to increasingly shorter widths until the desired width of the markdown is achieved.
 
 ## Installation
 pip install pandasfruit
@@ -93,3 +99,7 @@ print(x_for_display)
 ```
 
 ![](https://github.com/bol001/pandasfruit/assets/61277863/1ef6b638-53ad-4387-ae74-9c39f73fdf6d)
+
+```python
+x_for_display = pandasfruit.df_to_fitted_markdown(x, width=80, abbreviations={'foo_bar': 'fb', 'baz ham': 'baz h'})
+```

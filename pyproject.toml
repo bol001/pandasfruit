@@ -1,6 +1,6 @@
 [project]
 name = "pandasfruit"
-version = "1.4"
+version = "1.4.1"
 authors = [
   { name="bol001", email="info@bollingensoftware.com" },
 ]
